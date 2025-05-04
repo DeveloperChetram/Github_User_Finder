@@ -24,7 +24,7 @@ function Showinfo(details){
       <p class="mt-3 text-gray-300 text-sm">${details.bio ? details.bio : "Sorry there is no bio..."}</p>
     
       <div class="mt-3 flex flex-wrap gap-x-4 text-sm text-gray-400">
-        <p><strong class="text-white">Public Repos:</strong> 0</p>
+        <p><strong class="text-white">Public Repos:</strong> ${details.public_repos}</p>
         <p><strong class="text-white">Followers:</strong> ${details.followers}</p>
         <p><strong class="text-white">Following:</strong> ${details.following}</p>
         <p><strong class="text-white">Location:</strong> ${details.location ? details.location : "Location is not available" }</p>
