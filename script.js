@@ -14,9 +14,9 @@ function Showinfo(details){
     let card = `
         <div class="p-6 bg-[#161b22] border border-[#30363d] rounded-lg shadow-md min-h-[150px] text-white">
       <div class="flex items-center space-x-4">
-        <img src="${details.avatar_url}" alt="${details.name}" class="w-16 h-16 rounded-full border-2 border-[#238636]">
+        <img src="${details.avatar_url}" alt="${details.name?details.name : "Unknown"}" class="w-16 h-16 rounded-full border-2 border-[#238636]">
         <div>
-          <h2 class="text-lg font-semibold">${details.name}</h2>
+          <h2 class="text-lg font-semibold">${details.name ?details.name : "Unknown"}</h2>
           <p class="text-gray-400 text-sm">@${details.login}</p>
         </div>
       </div>
@@ -44,9 +44,23 @@ function Showinfo(details){
 }
 
 button.addEventListener('click',()=>{
+  if(input.value.trim().length === 0) {
+    
+  }
     let username = input.value.trim()
     getInfo(username).then((data)=>{
-        console.log(data)
+        // console.log(data)
         Showinfo(data)
         })
+})
+
+function getRepos(id){
+  return fetch(`https:/api.github.com/users/${id}/repos`)
+  .then((raw)=> raw.json())
+  
+}
+
+
+getRepos("developerchetram").then((data)=>{
+console.log(data)
 })
